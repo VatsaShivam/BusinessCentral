@@ -100,6 +100,60 @@ page 50112 "Custom Order Card"
                         Message('File upload was cancelled or failed.');
                 end;
             }
+            action(ParseXmlToValidField)
+            {
+                Caption = 'Parse from XML';
+                Image = Action;
+                trigger OnAction()
+                var
+                    ResponseText: Text;
+                    ParseXML: Codeunit ParseXmlCodeunit;
+                begin
+                    ResponseText :=
+                        '<Customers>' +
+                        '  <Customer>' +
+                        '    <No>CUS001</No>' +
+                        '    <Name>Shivam Mishra</Name>' +
+                        '    <Address>123 Business St</Address>' +
+                        '    <Address2>Suite 100</Address2>' +
+                        '    <City>Hyderabad</City>' +
+                        '    <PostCode>10001</PostCode>' +
+                        '    <CountryRegionCode>India</CountryRegionCode>' +
+                        '    <Contact>mukesh yadav</Contact>' +
+                        '    <PhoneNo>+91 123-345-6789</PhoneNo>' +
+                        '    <Email>mukesh.yadav@abccorp.com</Email>' +
+                        '    <ServiceStatus>Accepted</ServiceStatus>' +
+                        '    <ServiceStartDate>2024-06-01</ServiceStartDate>' +
+                        '  </Customer>' +
+                        '  <Customer>' +
+                        '    <No>CUS002</No>' +
+                        '    <Name>Rahul Singh</Name>' +
+                        '    <Address>456 Trade Ave</Address>' +
+                        '    <Address2>Floor 2</Address2>' +
+                        '    <City>Lucknow</City>' +
+                        '    <PostCode>20002</PostCode>' +
+                        '    <CountryRegionCode>India</CountryRegionCode>' +
+                        '    <Contact>Mili Dev</Contact>' +
+                        '    <PhoneNo>+91 123-7123 4567</PhoneNo>' +
+                        '    <Email>mili.dev@xyzltd.com</Email>' +
+                        '    <ServiceStatus>Pending</ServiceStatus>' +
+                        '    <ServiceStartDate>2024-06-15</ServiceStartDate>' +
+                        '  </Customer>' +
+                        '</Customers>';
+
+                    ParseXML.ParseAllFieldsFromXml(ResponseText);
+                end;
+            }
+            action(CreateUserInAPI)
+            {
+                Caption = 'Create User';
+                trigger OnAction()
+                var
+                    JsonSample: Codeunit "Json Learning";
+                begin
+                    JsonSample.CreateUserInAPI();
+                end;
+            }
         }
     }
 

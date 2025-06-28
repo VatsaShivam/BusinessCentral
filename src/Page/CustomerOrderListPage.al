@@ -1,6 +1,7 @@
 page 50111 "Custom Order List"
 {
     PageType = List;
+    CardPageId = "Custom Order Card";
     SourceTable = "Custom Order";
     ApplicationArea = All;
     UsageCategory = Lists;
